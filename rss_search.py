@@ -12,6 +12,20 @@ def search(phrase):
     for entry in rss.entries:
         yield entry
 
+def search_summary(phrase):
+    for entry in search(phrase):
+        result = unescape(entry.summary_detail.value)
+        if '<br>' in result:  # or '<br/>' in result:
+            if result.startswith("<div class='full'>"):
+                result = result[18:]
+            if result.endswith("</div>"):
+                result = result[:-6]
+            for line in result.split('<br>'):
+                yield line.strip()
+        else:
+            yield result
+
+
 def main():
     import sys
     for arg in sys.argv[1:]:
