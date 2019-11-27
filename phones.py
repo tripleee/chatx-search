@@ -15,6 +15,12 @@ def phone_search():
 
 def main():
     import sys
+    import logging
+    import os
+    logging.basicConfig(format='%(module)s:%(message)s')
+    if len(sys.argv) > 1:
+        logging.error('Syntax: {0}'.format(os.path.basename(sys.argv[0])))
+        sys.exit(1)
     for count, item in phone_search():
         print('{0:7} {1}'.format(count, item))
 
