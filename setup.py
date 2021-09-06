@@ -33,7 +33,7 @@ setup(
             'ip-search=ip_search:main',
             'ns-search=ns_search:main',
             'phones=phones:main',
-            'pharma-redirects=pharma_redirects_main',
+            'pharma-redirects=pharma_redirects:main',
             ]
     },
     #tests_require=
